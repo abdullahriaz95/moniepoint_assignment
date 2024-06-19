@@ -1,6 +1,8 @@
 import 'package:assignment/src/config/config.dart';
+import 'package:assignment/src/features/features.dart';
 import 'package:assignment/src/shared/shared.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:go_router/go_router.dart';
 
 class AppNavigationBar extends StatelessWidget {
@@ -10,13 +12,14 @@ class AppNavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('AppNavigationBar build');
     return Positioned(
       bottom: 0,
       left: 0,
       right: 0,
       child: Align(
         child: Container(
-          padding: const EdgeInsets.all(10),
+          padding: const EdgeInsets.all(6),
           constraints: BoxConstraints(maxWidth: context.width * 0.7),
           decoration: BoxDecoration(
             color: AppDesignColors.grey,
@@ -26,7 +29,7 @@ class AppNavigationBar extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: MainAppShellRoute.routeDefinition
                 .map(
-                  (e) => _AppBarIcon(
+                  (e) => AppBarIcon(
                     icon: e.icon!,
                     isSelected:
                         e.path == GoRouterState.of(context).matchedLocation,
@@ -37,58 +40,15 @@ class AppNavigationBar extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-class _AppBarIcon extends StatelessWidget {
-  const _AppBarIcon({
-    required this.icon,
-    required this.isSelected,
-    required this.name,
-  });
-
-  final String icon;
-  final bool isSelected;
-  final String name;
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        if (isSelected) ...{
-          Container(
-            padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              color: context.theme.colorScheme.primary,
-              borderRadius: BorderRadius.circular(100),
-            ),
-            child: const SizedBox(
-              height: 24,
-              width: 24,
-            ),
-          ),
-        },
-        InkWell(
-          onTap: () {
-            GoRouter.of(context).goNamed(name);
-          },
-          child: Container(
-            padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              color: isSelected
-                  ? Colors.transparent
-                  : context.theme.colorScheme.secondary,
-              borderRadius: BorderRadius.circular(100),
-            ),
-            child: Image.asset(
-              icon,
-              width: 24,
-              height: 24,
-            ),
-          ),
-        ),
-      ],
-    );
+    )
+        .animate(
+          delay: const Duration(milliseconds: 1000),
+        )
+        .then()
+        .moveY(
+          begin: 100,
+          end: 0,
+          duration: const Duration(milliseconds: 300),
+        );
   }
 }
