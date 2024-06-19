@@ -14,14 +14,29 @@ RouteBase get $mainAppShellRoute => ShellRouteData.$route(
       factory: $MainAppShellRouteExtension._fromState,
       routes: [
         GoRouteData.$route(
+          path: '/search',
+          name: 'search',
+          factory: $SearchScreenRouteExtension._fromState,
+        ),
+        GoRouteData.$route(
+          path: '/chats',
+          name: 'chats',
+          factory: $ChatsScreenRouteExtension._fromState,
+        ),
+        GoRouteData.$route(
           path: '/home',
           name: 'home',
           factory: $HomeScreenRouteExtension._fromState,
         ),
         GoRouteData.$route(
-          path: '/search',
-          name: 'search',
-          factory: $SearchScreenRouteExtension._fromState,
+          path: '/favorites',
+          name: 'favorites',
+          factory: $FavoritesScreenRouteExtension._fromState,
+        ),
+        GoRouteData.$route(
+          path: '/profile',
+          name: 'profile',
+          factory: $ProfileScreenRouteExtension._fromState,
         ),
       ],
     );
@@ -29,23 +44,6 @@ RouteBase get $mainAppShellRoute => ShellRouteData.$route(
 extension $MainAppShellRouteExtension on MainAppShellRoute {
   static MainAppShellRoute _fromState(GoRouterState state) =>
       MainAppShellRoute();
-}
-
-extension $HomeScreenRouteExtension on HomeScreenRoute {
-  static HomeScreenRoute _fromState(GoRouterState state) => HomeScreenRoute();
-
-  String get location => GoRouteData.$location(
-        '/home',
-      );
-
-  void go(BuildContext context) => context.go(location);
-
-  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
-
-  void pushReplacement(BuildContext context) =>
-      context.pushReplacement(location);
-
-  void replace(BuildContext context) => context.replace(location);
 }
 
 extension $SearchScreenRouteExtension on SearchScreenRoute {
@@ -66,11 +64,81 @@ extension $SearchScreenRouteExtension on SearchScreenRoute {
   void replace(BuildContext context) => context.replace(location);
 }
 
+extension $ChatsScreenRouteExtension on ChatsScreenRoute {
+  static ChatsScreenRoute _fromState(GoRouterState state) => ChatsScreenRoute();
+
+  String get location => GoRouteData.$location(
+        '/chats',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $HomeScreenRouteExtension on HomeScreenRoute {
+  static HomeScreenRoute _fromState(GoRouterState state) => HomeScreenRoute();
+
+  String get location => GoRouteData.$location(
+        '/home',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $FavoritesScreenRouteExtension on FavoritesScreenRoute {
+  static FavoritesScreenRoute _fromState(GoRouterState state) =>
+      FavoritesScreenRoute();
+
+  String get location => GoRouteData.$location(
+        '/favorites',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $ProfileScreenRouteExtension on ProfileScreenRoute {
+  static ProfileScreenRoute _fromState(GoRouterState state) =>
+      ProfileScreenRoute();
+
+  String get location => GoRouteData.$location(
+        '/profile',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$appRouterHash() => r'70dee0a15e7a607588e575314995c4e2751b82c3';
+String _$appRouterHash() => r'bbccbb2e83d070a7415d34b5ef905a4b743feac5';
 
 /// See also [appRouter].
 @ProviderFor(appRouter)

@@ -1,4 +1,5 @@
 import 'package:assignment/src/config/config.dart';
+import 'package:assignment/src/features/features.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -13,8 +14,7 @@ class MainShell extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final routeDefinitions = MainAppShellRoute.routeDefinition;
-    final s = GoRouterState.of(context).name;
+    final s = GoRouterState.of(context).matchedLocation;
     print(s);
     // final extras = GoRouterState.of(context).extra;
     // final conventionId = (extras as Map?)?[RouterConstants.conventionId] ?? '';
@@ -27,25 +27,10 @@ class MainShell extends HookConsumerWidget {
 
     return Scaffold(
       body: SafeArea(
-        child: Column(
+        child: Stack(
           children: [
-            Expanded(
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // AppNavigationBar(
-                  //   logoUrl: logoUrl,
-                  //   routeDefinitions: routeDefinitions,
-                  //   currentPath: GoRouterState.of(context).matchedLocation,
-                  //   onTap: (path) {
-                  //     context.go(path, extra: extras);
-                  //     log('going to location $path');
-                  //   },
-                  // ),
-                  Expanded(child: child),
-                ],
-              ),
-            ),
+            child,
+            const AppNavigationBar(),
           ],
         ),
       ),
