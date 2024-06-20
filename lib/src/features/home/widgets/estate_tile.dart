@@ -4,7 +4,6 @@ import 'package:assignment/src/config/config.dart';
 import 'package:assignment/src/shared/extensions/extensions.dart';
 import 'package:assignment/src/shared/models/models.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
