@@ -1,6 +1,5 @@
 import 'package:assignment/src/config/config.dart';
-import 'package:assignment/src/features/home/providers/real_estate_provider.dart';
-import 'package:assignment/src/shared/models/real_estate_model.dart';
+import 'package:assignment/src/features/features.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -54,7 +53,7 @@ class EstateList extends HookConsumerWidget {
                 ),
                 childrenDelegate: SliverChildBuilderDelegate(
                   childCount: estates?.length,
-                  (context, index) => _EstateTile(
+                  (context, index) => EstateTile(
                     estate: estates![index],
                   ),
                 ),
@@ -64,27 +63,6 @@ class EstateList extends HookConsumerWidget {
             end: 0,
             curve: Curves.easeInOut,
           ),
-    );
-  }
-}
-
-class _EstateTile extends StatelessWidget {
-  const _EstateTile({
-    required this.estate,
-  });
-
-  final RealEstateModel estate;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage(estate.image),
-          fit: BoxFit.cover,
-        ),
-        borderRadius: BorderRadius.circular(16),
-      ),
     );
   }
 }

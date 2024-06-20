@@ -39,15 +39,11 @@ class AppNavigationBar extends StatelessWidget {
           ),
         ),
       ),
-    )
-        .animate(
-          delay: const Duration(milliseconds: 2800),
-        )
-        .then()
-        .moveY(
+    ).animate(delay: 4000.milliseconds).moveY(
           begin: 100,
           end: 0,
-          duration: const Duration(milliseconds: 300),
+          duration: 600.milliseconds,
+          curve: Curves.easeInOut,
         );
   }
 }
