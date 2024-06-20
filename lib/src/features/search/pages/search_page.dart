@@ -59,8 +59,6 @@ class SearchPage extends HookConsumerWidget {
         newMarkers.add(marker);
       });
 
-      print('generic markers: ${newMarkers.length}');
-
       markers.value = newMarkers;
     });
 

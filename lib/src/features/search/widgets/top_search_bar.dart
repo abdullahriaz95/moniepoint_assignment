@@ -1,6 +1,7 @@
 import 'package:assignment/src/config/config.dart';
 import 'package:assignment/src/shared/shared.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
 class TopSearchBar extends StatelessWidget {
   const TopSearchBar({
@@ -41,7 +42,10 @@ class TopSearchBar extends StatelessWidget {
                   ),
                 ),
               ),
-            ),
+            ).animate(delay: 2.seconds).scaleXY(
+                  duration: 500.milliseconds,
+                  curve: Curves.easeInOut,
+                ),
             GestureDetector(
               onTap: () {},
               child: Container(
@@ -59,7 +63,10 @@ class TopSearchBar extends StatelessWidget {
                   ),
                 ),
               ),
-            ),
+            ).animate(delay: 2.seconds).scaleXY(
+                  duration: 500.milliseconds,
+                  curve: Curves.easeInOut,
+                ),
           ],
         ),
       ),

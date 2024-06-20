@@ -102,20 +102,30 @@ class BottomControls extends HookWidget {
                     ),
                   ),
                 ],
-              ),
+              ).animate(delay: 2.seconds).scaleXY(
+                    duration: 500.milliseconds,
+                    curve: Curves.easeInOut,
+                  ),
               const SizedBox(height: 10),
               MapButton(
                 iconPath: AppIcons.navigation,
                 onTap: () {},
-              ),
+              ).animate(delay: 2.seconds).scaleXY(
+                    duration: 500.milliseconds,
+                    curve: Curves.easeInOut,
+                  ),
             ],
           ),
           const SizedBox(width: 16),
           MapButton(
-            iconPath: AppIcons.list,
-            title: 'List of Varients',
-            onTap: () {},
-          ),
+                  iconPath: AppIcons.list,
+                  title: context.localizations.listOfVarients,
+                  onTap: () {})
+              .animate(delay: 2.seconds)
+              .scaleXY(
+                duration: 500.milliseconds,
+                curve: Curves.easeInOut,
+              ),
         ],
       ),
     );

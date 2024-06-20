@@ -14,5 +14,6 @@
     "cosyAreas": "Cosy Areas",
     "price": "Price",
     "infrastucture": "Infrastucture",
-    "withoutAnyLayer": "Without any layer"
+    "withoutAnyLayer": "Without any layer",
+    "listOfVarients": "List of Varients"
 }
