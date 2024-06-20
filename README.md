@@ -8,6 +8,8 @@ Source: https://dribbble.com/shots/23780608-Real-Estate-App
 ## Submission
 
 Github Link: https://github.com/abdullahriaz95/moniepoint_assignment
+APK Link: https://github.com/abdullahriaz95/moniepoint_assignment/blob/main/submission/app-release.apk
+Demo Video: https://github.com/abdullahriaz95/moniepoint_assignment/blob/main/submission/Moniepoint-Assignment.mp4
 
 
 ## App Design & Architecture 
