@@ -1,5 +1,8 @@
 part of 'theme.dart';
 
+/// Generic class for the app's color scheme.
+/// We have two color schemes: light and dark.
+/// The [AppLightColorScheme] color scheme is the default color scheme for the app.
 abstract class AppColorScheme {
   Color get primary;
   Color get onPrimary;

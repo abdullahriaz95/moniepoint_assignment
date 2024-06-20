@@ -1,5 +1,16 @@
 part of 'router.dart';
 
+/// This file contains the routes for the app.
+/// Each route is a class that extends [GoRouteData] and contains the route's path, name, icon, and localizedNameBuilder.
+/// The [localizedNameBuilder] is a function that returns the localized name of the route.
+/// The [buildPage] method returns the page that will be displayed when the route is navigated to.
+/// The [MainAppShellRoute] is the main shell route that contains the main navigation routes.
+/// The [MainShell] is the main shell widget that contains the main navigation bar.
+/// The [HomeScreenRoute], [SearchScreenRoute], [FavoritesScreenRoute], [ChatsScreenRoute], and [ProfileScreenRoute] are the main navigation routes.
+///
+
+/// The [routeDefinition] is a function that returns a [RouteDefinition] object with the route's path, name, icon, and localizedNameBuilder.
+///
 typedef RouteDefinition = ({
   String path,
   String name,
@@ -104,7 +115,7 @@ class FavoritesScreenRoute extends GoRouteData {
 
   @override
   Page<void> buildPage(BuildContext context, GoRouterState state) =>
-     NoTransitionPage(
+      NoTransitionPage(
         child: BackgroundGradient(
           child: Center(
             child: Text(
@@ -156,7 +167,7 @@ class ProfileScreenRoute extends GoRouteData {
 
   @override
   Page<void> buildPage(BuildContext context, GoRouterState state) =>
-     NoTransitionPage(
+      NoTransitionPage(
         child: BackgroundGradient(
           child: Center(
             child: Text(

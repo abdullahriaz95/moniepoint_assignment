@@ -26,6 +26,8 @@ class AppDesignColors {
   static const Color lightBackground = Color(0xFFF8F8F8);
 }
 
+/// The [AppColorScheme] is the main light color scheme for the app.
+///
 class AppLightColorScheme extends AppColorScheme {
   @override
   Color get primary => AppDesignColors.yellow;
