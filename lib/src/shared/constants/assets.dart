@@ -8,6 +8,10 @@ class AppIcons {
   static const profile = '$_iconBase/user.png';
   static const profileImage = '$_iconBase/profile_image.jpg';
   static const location = '$_iconBase/pin.png';
+  static const filters = '$_iconBase/filter.png';
+  static const navigation = '$_iconBase/navigation.png';
+  static const layers = '$_iconBase/layers.png';
+  static const list = '$_iconBase/list.png';
 }
 
 class AppImages {
@@ -22,4 +26,5 @@ class AppImages {
   static const six = '$_imageBase/6.jpg';
   static const seven = '$_imageBase/7.jpg';
   static const eight = '$_imageBase/8.jpg';
+
 }

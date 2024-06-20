@@ -86,9 +86,7 @@ class SearchScreenRoute extends GoRouteData {
   @override
   Page<void> buildPage(BuildContext context, GoRouterState state) =>
       const NoTransitionPage(
-        child: Center(
-          child: Text('Search page'),
-        ),
+        child: SearchPage(),
       );
 }
 

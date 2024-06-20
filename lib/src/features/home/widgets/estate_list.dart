@@ -15,12 +15,14 @@ class EstateList extends HookConsumerWidget {
     final estates = ref.watch(realEstateProviderProvider).value;
     final animationController = useAnimationController(
       duration: 1000.milliseconds,
+      keys: ['animation_controller'],
     );
 
     final callback = useCallback(() async {
       await Future.delayed(2500.milliseconds);
+
       animationController.forward();
-    });
+    }, [animationController]);
 
     useEffect(() {
       callback();
