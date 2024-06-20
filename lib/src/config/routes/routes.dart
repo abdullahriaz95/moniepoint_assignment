@@ -104,9 +104,14 @@ class FavoritesScreenRoute extends GoRouteData {
 
   @override
   Page<void> buildPage(BuildContext context, GoRouterState state) =>
-      const NoTransitionPage(
-        child: Center(
-          child: Text('Favorites page'),
+     NoTransitionPage(
+        child: BackgroundGradient(
+          child: Center(
+            child: Text(
+              context.localizations.favorites,
+              style: context.theme.textTheme.titleLarge,
+            ),
+          ),
         ),
       );
 }
@@ -125,9 +130,14 @@ class ChatsScreenRoute extends GoRouteData {
 
   @override
   Page<void> buildPage(BuildContext context, GoRouterState state) =>
-      const NoTransitionPage(
-        child: Center(
-          child: Text('Chats page'),
+      NoTransitionPage(
+        child: BackgroundGradient(
+          child: Center(
+            child: Text(
+              context.localizations.chats,
+              style: context.theme.textTheme.titleLarge,
+            ),
+          ),
         ),
       );
 }
@@ -146,9 +156,14 @@ class ProfileScreenRoute extends GoRouteData {
 
   @override
   Page<void> buildPage(BuildContext context, GoRouterState state) =>
-      const NoTransitionPage(
-        child: Center(
-          child: Text('Profile page'),
+     NoTransitionPage(
+        child: BackgroundGradient(
+          child: Center(
+            child: Text(
+              context.localizations.profile,
+              style: context.theme.textTheme.titleLarge,
+            ),
+          ),
         ),
       );
 }

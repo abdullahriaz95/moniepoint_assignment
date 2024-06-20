@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 
 class BackgroundGradient extends StatelessWidget {
   const BackgroundGradient({
+    this.child,
     super.key,
   });
+
+  final Widget? child;
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +23,7 @@ class BackgroundGradient extends StatelessWidget {
           transform: const GradientRotation(-0.6),
         ),
       ),
+      child: child,
     );
   }
 }
