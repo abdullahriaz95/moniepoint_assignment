@@ -16,5 +16,11 @@ ThemeData lightTheme({required AppColorScheme colorScheme}) {
       onSurface: colorScheme.onSurface,
     ),
     dividerColor: colorScheme.divider,
+    appBarTheme: const AppBarTheme(
+      systemOverlayStyle: SystemUiOverlayStyle(
+        statusBarBrightness: Brightness.light, // For iOS: (dark icons)
+        statusBarIconBrightness: Brightness.dark, // For Android: (dark icons)
+      ),
+    ),
   );
 }

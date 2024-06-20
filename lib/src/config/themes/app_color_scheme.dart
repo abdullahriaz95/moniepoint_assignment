@@ -7,6 +7,8 @@ class AppDesignColors {
 
   static const Color darkGrey = Color(0xFF232220);
 
+  static const Color beige = Color(0xFFA4957E);
+
   static const Color white = Color(0xFFFFFFFF);
 
   static const Color black = Color(0xFF000000);
@@ -21,7 +23,7 @@ class AppDesignColors {
 
   static const Color lightRed = Color(0xFFFFE7E1);
 
-  static const Color lightGreyBackground = Color(0xFFFAFAFA);
+  static const Color lightBackground = Color(0xFFF8F8F8);
 }
 
 class AppLightColorScheme extends AppColorScheme {
@@ -44,7 +46,7 @@ class AppLightColorScheme extends AppColorScheme {
   Color get onBackground => AppDesignColors.black;
 
   @override
-  Color get surface => AppDesignColors.lightGreyBackground;
+  Color get surface => AppDesignColors.lightBackground;
 
   @override
   Color get onSurface => AppDesignColors.black;

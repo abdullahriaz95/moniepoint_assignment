@@ -138,7 +138,7 @@ extension $ProfileScreenRouteExtension on ProfileScreenRoute {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$appRouterHash() => r'bbccbb2e83d070a7415d34b5ef905a4b743feac5';
+String _$appRouterHash() => r'af7d006c1b4b2f67f60b3acdfb5e87d50efbce9d';
 
 /// See also [appRouter].
 @ProviderFor(appRouter)

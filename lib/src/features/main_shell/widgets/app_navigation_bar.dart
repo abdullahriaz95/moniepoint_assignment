@@ -12,9 +12,8 @@ class AppNavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('AppNavigationBar build');
     return Positioned(
-      bottom: 0,
+      bottom: 30,
       left: 0,
       right: 0,
       child: Align(
@@ -42,7 +41,7 @@ class AppNavigationBar extends StatelessWidget {
       ),
     )
         .animate(
-          delay: const Duration(milliseconds: 1000),
+          delay: const Duration(milliseconds: 2800),
         )
         .then()
         .moveY(
