@@ -15,6 +15,7 @@ ThemeData lightTheme({required AppColorScheme colorScheme}) {
       surface: colorScheme.surface,
       onSurface: colorScheme.onSurface,
     ),
+    fontFamily: 'DMSans',
     dividerColor: colorScheme.divider,
     appBarTheme: const AppBarTheme(
       systemOverlayStyle: SystemUiOverlayStyle(
