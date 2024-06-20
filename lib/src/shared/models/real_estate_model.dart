@@ -10,6 +10,9 @@ class RealEstateModel with _$RealEstateModel {
     required String image,
     required String address,
     required String name,
+    required double latitude,
+    required double longitude,
+    required double priceInUsd,
   }) = _RealEstateModel;
 
   factory RealEstateModel.fromJson(Map<String, Object?> json) =>

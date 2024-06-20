@@ -1,30 +1,68 @@
 import 'dart:async';
-import 'dart:ui' as ui;
 
-import 'package:assignment/src/config/config.dart';
 import 'package:assignment/src/features/features.dart';
 import 'package:assignment/src/shared/shared.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class SearchPage extends HookWidget {
+class SearchPage extends HookConsumerWidget {
   const SearchPage({super.key});
 
-  static const CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(37.42796133580664, -122.085749655962),
-    zoom: 14.4746,
-  );
-
-  static const CameraPosition _kLake = CameraPosition(
-    target: LatLng(37.332219, -122.030616),
-    zoom: 16,
-  );
-
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final realEstates = ref.watch(realEstateProviderProvider).value;
     final controller = useState(Completer<GoogleMapController>());
+
+    final markers = useState<Set<Marker>>({});
+
+    final buildMarkers = useCallback(() async {
+      if (realEstates == null || realEstates.isEmpty) return;
+      final newMarkers = <Marker>{};
+
+      await Future.forEach(realEstates, (estate) async {
+        final widget = PriceMarker(estate: estate);
+        final bitmapDescriptor = await widget.toBitmapDescriptor();
+        final marker = Marker(
+          markerId: MarkerId(estate.name),
+          position: LatLng(estate.latitude, estate.longitude),
+          icon: bitmapDescriptor,
+          infoWindow: InfoWindow(
+            title: estate.name,
+            snippet: estate.address,
+          ),
+        );
+        newMarkers.add(marker);
+      });
+
+      markers.value = newMarkers;
+    });
+
+    final buildGenericMarkers = useCallback(() async {
+      if (realEstates == null || realEstates.isEmpty) return;
+      final newMarkers = <Marker>{};
+
+      await Future.forEach(realEstates, (estate) async {
+        final widget = GenericMarker(estate: estate);
+        final bitmapDescriptor = await widget.toBitmapDescriptor();
+        final marker = Marker(
+          markerId: MarkerId(estate.name),
+          position: LatLng(estate.latitude, estate.longitude),
+          icon: bitmapDescriptor,
+          infoWindow: InfoWindow(
+            title: estate.name,
+            snippet: estate.address,
+          ),
+        );
+        newMarkers.add(marker);
+      });
+
+      print('generic markers: ${newMarkers.length}');
+
+      markers.value = newMarkers;
+    });
 
     return StatusBarWrapper(
       reversed: false,
@@ -33,43 +71,24 @@ class SearchPage extends HookWidget {
           GoogleMap(
             mapToolbarEnabled: false,
             myLocationButtonEnabled: false,
-            initialCameraPosition: _kGooglePlex,
+            initialCameraPosition: GoogleMapConstants.googlePlex,
             mapType: MapType.normal,
             onMapCreated: (GoogleMapController mapController) => _onMapCreated(
               controller: controller,
               mapController: mapController,
+              callBack: buildMarkers,
             ),
+            markers: markers.value.toSet(),
           ),
           const TopSearchBar(),
-          Positioned(
-            left: 0,
-            right: 0,
-            bottom: 100,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Column(
-                  children: [
-                    MapButton(
-                      iconPath: AppIcons.layers,
-                      onTap: () {},
-                    ),
-                    const SizedBox(height: 10),
-                    MapButton(
-                      iconPath: AppIcons.navigation,
-                      onTap: () {},
-                    ),
-                  ],
-                ),
-                const SizedBox(width: 16),
-                MapButton(
-                  iconPath: AppIcons.list,
-                  title: 'List of Varients',
-                  onTap: () {},
-                ),
-              ],
-            ),
+          BottomControls(
+            markerViewSelected: (selectedMarkerView) {
+              if (selectedMarkerView == OptionsMenu.price) {
+                buildMarkers.call();
+              } else {
+                buildGenericMarkers.call();
+              }
+            },
           ),
         ],
       ),
@@ -79,65 +98,15 @@ class SearchPage extends HookWidget {
   void _onMapCreated({
     required ValueNotifier<Completer<GoogleMapController>> controller,
     required GoogleMapController mapController,
+    required Future<Null> Function() callBack,
   }) async {
     if (controller.value.isCompleted) return;
     controller.value.complete(mapController);
     final c = await controller.value.future;
     c.setMapStyle(GoogleMapConstants.darkMapStyle);
     await Future.delayed(1.seconds);
-    await c.animateCamera(CameraUpdate.newCameraPosition(_kLake));
-  }
-}
-
-class MapButton extends StatelessWidget {
-  const MapButton({
-    required this.iconPath,
-    required this.onTap,
-    this.title,
-    super.key,
-  });
-
-  final String iconPath;
-  final Function() onTap;
-  final String? title;
-
-  @override
-  Widget build(BuildContext context) {
-    return ClipRect(
-      child: BackdropFilter(
-        filter: ui.ImageFilter.blur(
-          sigmaX: 1.0,
-          sigmaY: 1.0,
-        ),
-        child: Container(
-          decoration: BoxDecoration(
-            color: AppDesignColors.white.withOpacity(0.2),
-            shape: title != null ? BoxShape.rectangle : BoxShape.circle,
-            borderRadius: title != null ? BorderRadius.circular(100) : null,
-          ),
-          padding: const EdgeInsets.all(16.0),
-          child: Row(
-            children: [
-              Center(
-                child: Image.asset(
-                  iconPath,
-                  width: 18,
-                  height: 18,
-                ),
-              ),
-              if (title != null) ...{
-                const SizedBox(width: 10),
-                Text(
-                  title!,
-                  style: context.theme.textTheme.titleMedium?.copyWith(
-                    color: AppDesignColors.white,
-                  ),
-                ),
-              }
-            ],
-          ),
-        ),
-      ),
-    );
+    await c.animateCamera(
+        CameraUpdate.newCameraPosition(GoogleMapConstants.appleInfinity));
+    callBack.call();
   }
 }

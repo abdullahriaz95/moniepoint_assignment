@@ -23,6 +23,9 @@ mixin _$RealEstateModel {
   String get image => throw _privateConstructorUsedError;
   String get address => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
+  double get latitude => throw _privateConstructorUsedError;
+  double get longitude => throw _privateConstructorUsedError;
+  double get priceInUsd => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +39,13 @@ abstract class $RealEstateModelCopyWith<$Res> {
           RealEstateModel value, $Res Function(RealEstateModel) then) =
       _$RealEstateModelCopyWithImpl<$Res, RealEstateModel>;
   @useResult
-  $Res call({String image, String address, String name});
+  $Res call(
+      {String image,
+      String address,
+      String name,
+      double latitude,
+      double longitude,
+      double priceInUsd});
 }
 
 /// @nodoc
@@ -55,6 +64,9 @@ class _$RealEstateModelCopyWithImpl<$Res, $Val extends RealEstateModel>
     Object? image = null,
     Object? address = null,
     Object? name = null,
+    Object? latitude = null,
+    Object? longitude = null,
+    Object? priceInUsd = null,
   }) {
     return _then(_value.copyWith(
       image: null == image
@@ -69,6 +81,18 @@ class _$RealEstateModelCopyWithImpl<$Res, $Val extends RealEstateModel>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      latitude: null == latitude
+          ? _value.latitude
+          : latitude // ignore: cast_nullable_to_non_nullable
+              as double,
+      longitude: null == longitude
+          ? _value.longitude
+          : longitude // ignore: cast_nullable_to_non_nullable
+              as double,
+      priceInUsd: null == priceInUsd
+          ? _value.priceInUsd
+          : priceInUsd // ignore: cast_nullable_to_non_nullable
+              as double,
     ) as $Val);
   }
 }
@@ -81,7 +105,13 @@ abstract class _$$RealEstateModelImplCopyWith<$Res>
       __$$RealEstateModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String image, String address, String name});
+  $Res call(
+      {String image,
+      String address,
+      String name,
+      double latitude,
+      double longitude,
+      double priceInUsd});
 }
 
 /// @nodoc
@@ -98,6 +128,9 @@ class __$$RealEstateModelImplCopyWithImpl<$Res>
     Object? image = null,
     Object? address = null,
     Object? name = null,
+    Object? latitude = null,
+    Object? longitude = null,
+    Object? priceInUsd = null,
   }) {
     return _then(_$RealEstateModelImpl(
       image: null == image
@@ -112,6 +145,18 @@ class __$$RealEstateModelImplCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      latitude: null == latitude
+          ? _value.latitude
+          : latitude // ignore: cast_nullable_to_non_nullable
+              as double,
+      longitude: null == longitude
+          ? _value.longitude
+          : longitude // ignore: cast_nullable_to_non_nullable
+              as double,
+      priceInUsd: null == priceInUsd
+          ? _value.priceInUsd
+          : priceInUsd // ignore: cast_nullable_to_non_nullable
+              as double,
     ));
   }
 }
@@ -122,7 +167,12 @@ class _$RealEstateModelImpl
     with DiagnosticableTreeMixin
     implements _RealEstateModel {
   const _$RealEstateModelImpl(
-      {required this.image, required this.address, required this.name});
+      {required this.image,
+      required this.address,
+      required this.name,
+      required this.latitude,
+      required this.longitude,
+      required this.priceInUsd});
 
   factory _$RealEstateModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$RealEstateModelImplFromJson(json);
@@ -133,10 +183,16 @@ class _$RealEstateModelImpl
   final String address;
   @override
   final String name;
+  @override
+  final double latitude;
+  @override
+  final double longitude;
+  @override
+  final double priceInUsd;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'RealEstateModel(image: $image, address: $address, name: $name)';
+    return 'RealEstateModel(image: $image, address: $address, name: $name, latitude: $latitude, longitude: $longitude, priceInUsd: $priceInUsd)';
   }
 
   @override
@@ -146,7 +202,10 @@ class _$RealEstateModelImpl
       ..add(DiagnosticsProperty('type', 'RealEstateModel'))
       ..add(DiagnosticsProperty('image', image))
       ..add(DiagnosticsProperty('address', address))
-      ..add(DiagnosticsProperty('name', name));
+      ..add(DiagnosticsProperty('name', name))
+      ..add(DiagnosticsProperty('latitude', latitude))
+      ..add(DiagnosticsProperty('longitude', longitude))
+      ..add(DiagnosticsProperty('priceInUsd', priceInUsd));
   }
 
   @override
@@ -156,12 +215,19 @@ class _$RealEstateModelImpl
             other is _$RealEstateModelImpl &&
             (identical(other.image, image) || other.image == image) &&
             (identical(other.address, address) || other.address == address) &&
-            (identical(other.name, name) || other.name == name));
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.latitude, latitude) ||
+                other.latitude == latitude) &&
+            (identical(other.longitude, longitude) ||
+                other.longitude == longitude) &&
+            (identical(other.priceInUsd, priceInUsd) ||
+                other.priceInUsd == priceInUsd));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, image, address, name);
+  int get hashCode => Object.hash(
+      runtimeType, image, address, name, latitude, longitude, priceInUsd);
 
   @JsonKey(ignore: true)
   @override
@@ -182,7 +248,10 @@ abstract class _RealEstateModel implements RealEstateModel {
   const factory _RealEstateModel(
       {required final String image,
       required final String address,
-      required final String name}) = _$RealEstateModelImpl;
+      required final String name,
+      required final double latitude,
+      required final double longitude,
+      required final double priceInUsd}) = _$RealEstateModelImpl;
 
   factory _RealEstateModel.fromJson(Map<String, dynamic> json) =
       _$RealEstateModelImpl.fromJson;
@@ -193,6 +262,12 @@ abstract class _RealEstateModel implements RealEstateModel {
   String get address;
   @override
   String get name;
+  @override
+  double get latitude;
+  @override
+  double get longitude;
+  @override
+  double get priceInUsd;
   @override
   @JsonKey(ignore: true)
   _$$RealEstateModelImplCopyWith<_$RealEstateModelImpl> get copyWith =>
