@@ -50,7 +50,6 @@ class Summary extends HookWidget {
                 context.localizations.letsSelectYourPerfectPlace,
                 style: context.theme.textTheme.displayMedium?.copyWith(
                   color: AppDesignColors.grey,
-                  // fontFamily: 'DMSans'
                 ),
               )
                   .animate()
