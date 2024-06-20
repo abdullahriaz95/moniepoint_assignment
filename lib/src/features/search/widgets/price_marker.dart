@@ -22,12 +22,12 @@ class PriceMarker extends StatelessWidget {
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(2.0),
+        padding: const EdgeInsets.all(4.0),
         child: Text(
           '\$${estate.priceInUsd.toInt()}',
           style: context.theme.textTheme.bodySmall?.copyWith(
             color: AppDesignColors.white,
-            fontSize: 5,
+            fontSize: 16,
             fontWeight: FontWeight.bold,
           ),
         ),

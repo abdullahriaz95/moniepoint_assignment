@@ -22,9 +22,9 @@ class GenericMarker extends StatelessWidget {
         ),
       ),
       child: const Padding(
-        padding: EdgeInsets.all(2.0),
+        padding: EdgeInsets.all(4.0),
         child: Icon(Icons.bungalow_rounded, color: AppDesignColors.white,
-        size: 8,
+        size: 20,
         ),
       ),
     );

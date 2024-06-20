@@ -11,7 +11,7 @@ extension ToBitDescription on Widget {
       child: MediaQuery(data: const MediaQueryData(), child: Directionality(textDirection: TextDirection.ltr, child: this)),
     );
     final pngBytes = await createImageFromWidget(widget, waitToRender: waitToRender, logicalSize: logicalSize, imageSize: imageSize);
-    return BitmapDescriptor.bytes(pngBytes);
+    return BitmapDescriptor.fromBytes(pngBytes);
   }
 }
 

@@ -13,7 +13,7 @@ class Summary extends HookWidget {
     // We calculate the height of the expanded app bar, so that layout
     // adapts to the screen dynamically.
     final expandedHeight =
-        16 + 16 + 56 + 50 + 56 + 28 + 64 + (context.width * 0.5);
+        16 + 16 + 56 + 50 + 56 + 30 + 75 + (context.width * 0.5);
 
     return SliverAppBar(
       foregroundColor: Colors.transparent,
